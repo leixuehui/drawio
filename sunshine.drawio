@@ -6183,7 +6183,7 @@
             <mxPoint x="235" y="52" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="mbj3yYct24mf5ZdRoOsu-1" value="&lt;div&gt;reg3 = 3&lt;/div&gt;&lt;div&gt;reg2 = 2&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="hAS7aFwFYodXvwlG9_Zd-155">
+        <mxCell id="mbj3yYct24mf5ZdRoOsu-1" value="&lt;div&gt;reg3 = 3&lt;/div&gt;&lt;div&gt;reg2 = 2&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" parent="hAS7aFwFYodXvwlG9_Zd-155" vertex="1">
           <mxGeometry x="530" y="260" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="hAS7aFwFYodXvwlG9_Zd-156" value="" style="group" parent="1" vertex="1" connectable="0">
@@ -6398,6 +6398,81 @@
         </mxCell>
         <mxCell id="EOiVFlJsMGjhf75Rbu2b-51" value="S&lt;sub&gt;BGGR&lt;/sub&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=13;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1140" y="330" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="320" y="1270" width="790" height="477" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-2" value="&lt;div&gt;&lt;hr&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;weighting&amp;nbsp; function (pixel-wise)——remove sqrt&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;hr&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;Input: &lt;/font&gt;&lt;/b&gt;Define parameters: abs_diff_thresh_U;abs_diff_thresh_V. These are come from noise mode&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;b&gt;&amp;nbsp;&lt;font style=&quot;font-size: 15px;&quot;&gt;for&lt;/font&gt;&lt;/b&gt; each channel abs(differ value&lt;sup&gt;2&lt;/sup&gt;)&amp;nbsp; &lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;do&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;b&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;if&lt;/font&gt;&lt;/b&gt; abs_diff_(U or V)&lt;sup&gt;2&lt;/sup&gt; &amp;lt;  &lt;/span&gt;4 * &lt;font&gt;Var(&lt;/font&gt;(U or V)) or L_Y channel &amp;lt; noise_min(128)&lt;sup&gt;2&lt;/sup&gt; or L_Y channel &amp;gt; 16384 (14 bit)&lt;sup&gt;2&lt;/sup&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;abs_diff_weight_(U or V) = 0&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot; align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;b&gt;elif&lt;/b&gt;&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;abs_diff_(U or V)&lt;sup&gt;2&lt;/sup&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &amp;gt; 9 *  &lt;/span&gt;&lt;font&gt;Var(&lt;/font&gt;(U or V))&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;abs_diff_weight_(U or V) = 1&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;b&gt;elif&lt;/b&gt; abs_differ_thresh_A(U or V)&lt;sup&gt;2 &lt;/sup&gt;== 0&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;/span&gt;abs_diff_weight_(U or V) = 1&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;b&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;else &lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;abs_diff_weight_(U or V) = 1 / (abs_differ_thresh_B(U or V)&lt;sup&gt;2&lt;/sup&gt; - abs_differ_thresh_A(U or V)&lt;sup&gt;2&lt;/sup&gt;) * (&lt;span style=&quot;white-space: pre;&quot;&gt;abs_diff_(U or V)&lt;sup&gt;2&lt;/sup&gt; - &lt;/span&gt;abs_diff_thresh_A(U or V)&lt;sup&gt;2&lt;/sup&gt;)&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot; style=&quot;font-size: 13px;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;end for &lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot; style=&quot;font-size: 13px;&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;output:&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt; Differs&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;channel&lt;/font&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt; &lt;/font&gt;weight &lt;font style=&quot;font-size: 13px;&quot;&gt;value&lt;font style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;&lt;hr&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="DFEbCgryDQXl6PANZycR-1">
+          <mxGeometry x="-50" y="-20" width="840" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-3" value="" style="group;labelBorderColor=none;shadow=0;glass=0;rounded=0;" vertex="1" connectable="0" parent="DFEbCgryDQXl6PANZycR-1">
+          <mxGeometry x="34" y="235" width="453" height="242" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-4" value="" style="endArrow=classic;html=1;rounded=0;labelBorderColor=none;" edge="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="155" y="172" as="sourcePoint" />
+            <mxPoint x="155" y="12" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-5" value="" style="endArrow=classic;html=1;rounded=0;labelBorderColor=none;" edge="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="155" y="172" as="sourcePoint" />
+            <mxPoint x="345" y="172" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-6" value="abs_diff_weight_(U/V)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBorderColor=none;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="5" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-7" value="&lt;div&gt;abs_differ_thresh_A {current is [reg2 * &lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;/span&gt;sqrt(&lt;font&gt;Var(&lt;/font&gt;(U or V))]&lt;sup&gt;2&lt;/sup&gt;}&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBorderColor=none;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="82.5" y="182" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-8" value="abs_differ&lt;sup&gt;2&lt;/sup&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBorderColor=none;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="335" y="180" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-9" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;labelBorderColor=none;" edge="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="238" y="52" as="sourcePoint" />
+            <mxPoint x="355" y="52" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-10" value="" style="endArrow=none;html=1;rounded=0;labelBorderColor=none;" edge="1" parent="DFEbCgryDQXl6PANZycR-3" source="DFEbCgryDQXl6PANZycR-16" target="DFEbCgryDQXl6PANZycR-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="185" y="172" as="sourcePoint" />
+            <mxPoint x="235" y="52" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-11" value="&lt;div&gt;abs_differ_thresh_B {current is [reg3 * &lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;/span&gt;sqrt(&lt;font&gt;Var(&lt;/font&gt;(U or V))]&lt;sup&gt;2&lt;/sup&gt;}&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBorderColor=none;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="223" y="82" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-12" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBorderColor=none;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="120" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-13" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="225" y="42" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-14" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="235" y="52" as="sourcePoint" />
+            <mxPoint x="255" y="72" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-15" value="" style="endArrow=none;html=1;rounded=0;labelBorderColor=none;" edge="1" parent="DFEbCgryDQXl6PANZycR-3" target="DFEbCgryDQXl6PANZycR-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="185" y="172" as="sourcePoint" />
+            <mxPoint x="235" y="52" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-16" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry x="178" y="162" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-17" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="DFEbCgryDQXl6PANZycR-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="155" y="52" as="sourcePoint" />
+            <mxPoint x="235" y="52" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DFEbCgryDQXl6PANZycR-18" value="&lt;div&gt;reg3 = 3&lt;/div&gt;&lt;div&gt;reg2 = 2&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="DFEbCgryDQXl6PANZycR-1">
+          <mxGeometry x="530" y="260" width="60" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
